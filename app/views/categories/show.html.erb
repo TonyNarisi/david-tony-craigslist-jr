@@ -1,0 +1,12 @@
+<h3><%= @category.name %></h3>
+
+<ul class="categories">
+  <% @articles.each do |article| %>
+    <li><%= link_to "#{article.title}", category_article_path(@category,article) %></li>
+  <% end %>
+</ul>
+
+<div class="center">
+  <%= link_to 'Add Article', new_category_article_path(@category), class: "button black-text" %>
+  <%= link_to 'Delete Category', category_path(@category), method: :delete, data: { confirm: "Are you sure?" }, class: "button black-text" %>
+</div>

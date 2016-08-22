@@ -1,0 +1,22 @@
+
+<% if @article.errors.any? %>
+  <div>
+    <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being published:</h2>
+    <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([@category, @article]) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+  <%= f.submit %>
+<% end %>
